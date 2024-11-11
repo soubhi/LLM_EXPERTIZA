@@ -1,4 +1,4 @@
-# LLM Expertiza Vectorizer
+# LLM Codebase(Expertiza) Vectorizer
 
 ## Overview
 This project is designed to read, embed, and analyze code files using CodeBERT and other machine learning tools. The embeddings and metadata are stored in MongoDB, and FAISS is used for similarity search. The project also leverages OpenAI's API for analyzing code relationships and structure.
@@ -20,10 +20,12 @@ The following Python libraries are required to run the project:
 - `python-dotenv`
 
 ## Installation
-1. **Clone the repository**:
+1. **Clone the repository(Expertiza)**:
    ```bash
    git clone https://github.com/JackLiu28/LLM_EXPERTIZA.git
    cd LLM_EXPERTIZA
+   ```
+   *Note that any repository Ruby Codebase can be analyzed with this tool
 2. **Requirement.txt install**:
     ```bash 
     pip install -r requirements.txt          
