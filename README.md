@@ -22,8 +22,8 @@ The following Python libraries are required to run the project:
 ## Installation
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/LLM_Expertiza_Vectorizer.git
-   cd LLM_Expertiza_Vectorizer
+   git clone https://github.com/JackLiu28/LLM_EXPERTIZA.git
+   cd LLM_EXPERTIZA
 2. **Requirement.txt install**:
     ```bash 
     pip install -r requirements.txt          
