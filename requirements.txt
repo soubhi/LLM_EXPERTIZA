@@ -1,0 +1,7 @@
+pymongo==4.5.0
+numpy==1.24.3
+torch==2.0.1
+faiss-cpu==1.7.3 
+openai==0.11.0
+transformers==4.33.0
+
