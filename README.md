@@ -1,4 +1,4 @@
-# LLM Codebase(Expertiza) Vectorizer
+# LLM Codebase (Expertiza) Vectorizer
 
 ## Overview
 This project is designed to read, embed, and analyze code files using CodeBERT and other machine learning tools. The embeddings and metadata are stored in MongoDB, and FAISS is used for similarity search. The project also leverages OpenAI's API for analyzing code relationships and structure.
