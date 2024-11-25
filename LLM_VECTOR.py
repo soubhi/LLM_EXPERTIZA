@@ -11,7 +11,7 @@ load_dotenv()
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 
 
-uri =os.getenv("MONGODB_URL") # "mongodb+srv://jliu77:SXWJdSjjpM1KFngE@expertiza-llm-vectors.3y2d7.mongodb.net/?retryWrites=true&w=majority&appName=EXPERTIZA-LLM-VECTORs"
+uri =os.getenv("MONGODB_URL") 
 
 # Create a new client and connect to the server
 client = MongoClient(uri)
@@ -65,15 +65,24 @@ def _create_prompt_from_code(indices):
             if doc:
                 context.append(f"File Path: {doc['path']}\nCode Snippet:\n{doc['content']}\n")
         
-    prompt = "\n---\n".join(context) + "\nAnalyze the relationships such as class inheritance, method calls, and imports in the provided code and how they can be improved in terms of code design, structure, and coupling."
+    prompt = "\n---\n".join(context) + "\nAnalyze the relationships such as class inheritance, method calls, and imports in the provided code and how they can be improved in terms of code design, structure, and coupling. Give code snippet examples in response."
     return prompt
 
 def _analyze_code_relationships_with_gpt4(prompt):
     response = openai.ChatCompletion.create(
         model="gpt-4",
-        messages=[{"role": "user", "content": prompt}]
+        messages=[{"role": "user", "content": prompt + "please give code snippet examples"}]
     )
     return response['choices'][0]['message']['content']
+
+def _analyze_code_relationships_with_code_snips(prompt_text):
+    response = openai.Completion.create(
+        model="text-davinci-003",
+        prompt=prompt_text,
+        max_tokens=150,  # Adjust as needed
+        temperature=0.2  # Lower values for more deterministic outputs
+    )
+    return response.choices[0].text.strip()
 
 # Main script to read, embed, and store vectors
 def main():
@@ -128,6 +137,15 @@ def main():
 
     print("Analysis Result from GPT-4:")
     print(analysis_result)
+
+
+    file_path = ".../LLM_output.txt"
+
+    content = analysis_result
+
+    with open(file_path, 'w') as file:
+        file.write(content)
+    print("wrote to file")
 
 
 if __name__ == "__main__":
