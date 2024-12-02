@@ -20,7 +20,7 @@ The following Python libraries are required to run the project:
 - `python-dotenv`
 
 ## Installation
-1. **Clone the repository(Expertiza)**:
+1. **Clone the repository locally to get root directory for input(Expertiza)**:
    ```bash
    git clone https://github.com/JackLiu28/LLM_EXPERTIZA.git
    cd LLM_EXPERTIZA
