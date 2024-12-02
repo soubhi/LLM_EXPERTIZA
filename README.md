@@ -40,7 +40,7 @@ The following Python libraries are required to run the project:
      ```bash
      C:.../anaconda3/envs/pyml/python.exe .../LLM_EXPERTIZA/LLM_VECTOR.py
      
-6. ** Output**:
+6. **Output**:
    output.txt file
    EX: 
 ```bash
