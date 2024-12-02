@@ -41,7 +41,7 @@ The following Python libraries are required to run the project:
      C:.../anaconda3/envs/pyml/python.exe .../LLM_EXPERTIZA/LLM_VECTOR.py
      
 6. **Output**
-   output.txt file EX: 
+   LLM_output.txt file EX: 
 ```bash
 The code provided shows ActiveRecord models in a Ruby on Rails application. In general, the code is well-structured and adheres to Rails conventions. However, there are a few design and structural improvements that can be made to enhance the code maintainability, reduce coupling, and improve readability.
 
