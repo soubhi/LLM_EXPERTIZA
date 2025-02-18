@@ -56,7 +56,7 @@ def _clone_or_update_repo(pr_url, base_path="temp_codebase"):
         subprocess.run(["git", "-C", repo_path, "fetch", "origin", f"pull/{pr_number}/head:pr-{pr_number}"], check=True)
         subprocess.run(["git", "-C", repo_path, "checkout", f"pr-{pr_number}"], check=True)
 
-    return repo_path
+    return repo_path, pr_number
 
 def _get_changed_files(repo_path):
     """
@@ -140,7 +140,7 @@ def _analyze_code_relationships_with_gpt4(prompt):
 def main(pr_url=None):
     if pr_url:
         print(f"Processing GitHub Pull Request: {pr_url}")
-        repo_path = _clone_or_update_repo(pr_url)
+        repo_path, pr_number = _clone_or_update_repo(pr_url)
     else:
         repo_path = os.getenv("CODEBASE_PATH")
 
@@ -195,6 +195,15 @@ def main(pr_url=None):
 
     print("Analysis Result from GPT-4:")
     print(analysis_result)
+
+    output_dir = os.getcwd()
+    os.makedirs(output_dir, exist_ok=True)
+
+    file_path = os.path.join(output_dir, f"LLM_output_PR_{pr_number}.txt")
+    with open(file_path, 'w') as file:
+        file.write(analysis_result)
+
+    print(f"Output written to {file_path}")
 
 if __name__ == "__main__":
     import sys
